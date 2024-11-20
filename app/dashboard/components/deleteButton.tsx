@@ -16,6 +16,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog" // Add these imports
 import { useState } from 'react';
+import { Task } from "../../../types/Types"
 
 export default function DeleteButton({ task }: { task: Task }) {
   const [isLoading, setIsLoading] = useState(false)

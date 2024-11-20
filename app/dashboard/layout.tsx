@@ -2,7 +2,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Home, CheckSquare, Calendar, Settings, LogOut } from 'lucide-react'
-import { signOutAction } from "@/app/actions";
+import LogoutButton from './components/logoutButton'
 
 export default async function DashboardLayout({
   children,
@@ -74,14 +74,7 @@ export default async function DashboardLayout({
                 </Link>
               </li>
               <li>
-                <form action={signOutAction} method="post">
-                  <button 
-                    className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md group transition-colors"
-                  >
-                    <LogOut className="w-4 h-4 text-gray-400 group-hover:text-red-600" />
-                    <span className="group-hover:text-red-600">Logout</span>
-                  </button>
-                </form>
+                <LogoutButton />
               </li>
             </ul>
           </div>

@@ -5,10 +5,10 @@ import { createClient } from "@/utils/supabase/client"
 import { useState } from "react"
 import { revalidateDashboard } from "@/app/actions/revalidate"
 import { CheckCircle, Circle } from "lucide-react" // Add this import
-
+import { Task } from "../../../types/Types"
 export default function MarkCompleted({ task }: { task: Task }) {
   const [isCompleted, setIsCompleted] = useState(task.status === 'completed')
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleMarkCompleted = async () => {

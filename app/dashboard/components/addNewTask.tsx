@@ -15,6 +15,8 @@ import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react"
 import { createClient } from "@/utils/supabase/client"
 import { revalidateDashboard } from "@/app/actions/revalidate"
+import { User } from "../../../types/Types"
+
 
 export default  function AddNewTask({ user }: { user: User }) {
   const [title, setTitle] = useState("")
