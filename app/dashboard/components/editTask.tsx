@@ -15,16 +15,18 @@ import { Calendar } from "@/components/ui/calendar"
 import { useState } from 'react'
 import { createClient } from "@/utils/supabase/client"
 import { revalidateDashboard } from "@/app/actions/revalidate"
+import { Task, User } from "@/types/Types"
 
-export default function EditTask({ task, user }: { task: Task, user: User }) {
+
+export default function EditTask({ task, user }: { task: Task, user: User}) {
   const [title, setTitle] = useState(task.title)
   const [description, setDescription] = useState(task.description)
-  const [date, setDate] = useState(task.due_date)
+  const [date, setDate] = useState<Date | undefined>(task.due_date)
   const [formCompleted, setFormCompleted] = useState(false)
 
 
   const supabase = createClient()
-
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { data, error } = await supabase
@@ -91,7 +93,7 @@ export default function EditTask({ task, user }: { task: Task, user: User }) {
             <Calendar
               mode="single"
               selected={date}
-              onSelect={setDate}
+              onSelect={(date: Date | undefined) => setDate(date)}
               className="rounded-md border"
             />
           </div>

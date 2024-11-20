@@ -8,7 +8,7 @@ export default function CalendarPage() {
  
   return (
     <Calendar
-      mode="range"
+      mode="single"
       selected={date}
       onSelect={setDate}
       className="rounded-md border"

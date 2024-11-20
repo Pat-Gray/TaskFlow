@@ -59,7 +59,7 @@ return (
             </div>
           </div>
           <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-100">
-            <EditTask task={task} />
+            <EditTask task={task} user={user}/>
             <MarkCompleted task={task}/>
             <DeleteButton task={task}/>
           </div>
