@@ -1,16 +1,43 @@
-import Hero from "@/components/hero";
-import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
-import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
+import Link from 'next/link'
+import { Button } from "@/components/ui/button"
+import { CheckCircle, Zap, Shield, ArrowRight, Layout, Calendar, Bell } from "lucide-react"
 
-export default async function Index() {
+export default function LandingPage() {
   return (
-    <>
-      <Hero />
-      <main className="flex-1 flex flex-col gap-6 px-4">
-        <h2 className="font-medium text-xl mb-4">Next steps</h2>
-        {hasEnvVars ? <SignUpUserSteps /> : <ConnectSupabaseSteps />}
-      </main>
-    </>
-  );
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
+              Manage tasks with
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> 
+                {" "}efficiency
+              </span>
+            </h1>
+            <p className="mt-6 text-xl text-gray-600 max-w-3xl mx-auto">
+              Stay organized, focused, and in control. TaskFlow helps you manage your tasks 
+              with elegance and simplicity.
+            </p>
+           
+          </div>
+        </div>
+      </section>
+<div className="flex justify-center gap-5">
+  <Link href="/sign-in">
+    <Button className="bg-black text-white hover:opacity-90">
+      Sign in
+    </Button>
+  </Link>
+  <Link href="/sign-in">
+    <Button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90">
+      Sign up
+    </Button>
+  </Link>
+</div>
+     </div>
+  )
 }
+
