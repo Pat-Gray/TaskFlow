@@ -2,8 +2,8 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Home, CheckSquare, Calendar, Settings, LogOut } from 'lucide-react'
-import LogoutButton from './components/logoutButton'
-import CalendarPage from './calendar/page'
+import LogoutButton from '../dashboard/components/logoutButton'
+
 
 export default async function DashboardLayout({
   children,

@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button"
 import EditTask from './components/editTask'
 import MarkCompleted from './components/markCompleted'
 import DeleteButton from './components/deleteButton'
+import DashboardComponent from './components/DashboardComponents'
+import { Task } from '@/types/Types'
+
 export default async function Page() {
   
   const supabase = await createClient()
@@ -18,17 +21,28 @@ export default async function Page() {
 
   const { data: tasks } = await supabase.from('tasks').select()
 
+  const safeTasks: Task[] = tasks ?? []
 
 return (
   <div className="max-w-4xl mx-auto p-6 min-h-screen bg-gray-50">
+    <div className="flex justify-between items-center">
     <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
       My Tasks
     </h1>
     <div className="mb-8">
       <AddNewTask user={user}/>
     </div>
+      </div>
+
+<div>
+  <DashboardComponent tasks={safeTasks}/>
+  </div>
+
+
+
+
     <div className="grid gap-4">
-      {tasks?.map((task) => (
+      {safeTasks?.map((task) => (
         <div 
           key={task.id} 
           className={`

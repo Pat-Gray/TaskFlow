@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { createClient } from "@/utils/supabase/server";
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 
 export default async function AuthButton() {
   const supabase = await createClient();
@@ -11,6 +12,8 @@ export default async function AuthButton() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  const profile = await supabase.from('profiles').select('*').eq('id', user?.id).single();
 
   if (!hasEnvVars) {
     return (
@@ -50,7 +53,10 @@ export default async function AuthButton() {
   }
   return user ? (
     <div className="flex items-center gap-4">
-      Hey, {user.email}!
+      <Avatar className="rounded-full">
+        <AvatarImage src={profile.data?.avatar_url} className="w-8 h-8"/>
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
       <form action={signOutAction}>
         <Button type="submit" variant={"outline"}>
           Sign out

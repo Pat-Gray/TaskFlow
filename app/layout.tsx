@@ -26,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.className} suppressHydrationWarning>
       <head>
-      <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+      <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
   </head>
       <body className="bg-background text-foreground">
         <ThemeProvider
@@ -40,6 +42,7 @@ export default function RootLayout({
               <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
                 <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
                   <div className="flex gap-5 items-center font-semibold">
+                    <Link href="/">
                   <h1 className="flex items-center gap-2 text-2xl font-bold">
   <svg 
     className="w-6 h-6 text-blue-600" 
@@ -54,6 +57,7 @@ export default function RootLayout({
     TaskFlow
   </span>
 </h1>
+    </Link>
                   </div>
                   {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
                 </div>
