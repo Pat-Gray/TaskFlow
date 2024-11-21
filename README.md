@@ -22,6 +22,7 @@ A modern task management application built with Next.js 14, featuring a clean in
 - **Deployment**: Vercel
 
 ## 📱 Screenshots
+![Screenshot 2024-11-21 155457](https://github.com/user-attachments/assets/42205598-32ca-4ece-8c1f-9d2e5fc08335)
 
 
 ## 🚀 Live Demo
